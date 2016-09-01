@@ -90,7 +90,7 @@ class MusicLibrary
       albums = albums.select(&unplayed)
     end
     albums = albums.map do |album|
-      if show_unplayed_only == false
+      if show_unplayed_only == true
         played_state = ''
       else
         played_state = album.played == true ? ' (played)' : ' (unplayed)'
