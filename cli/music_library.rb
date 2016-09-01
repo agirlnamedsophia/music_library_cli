@@ -81,15 +81,19 @@ class MusicLibrary
   end
 
   def display_albums(artist: nil, show_unplayed_only: false)
-    # filter based on input, default to all albums
+    # default to all albums
     albums = @albums
-    if artist
-      albums = find_albums(nil, artist)
-    end
+
+    # filter by artist
+    albums = find_albums(nil, artist) if artist
+
+    # filter by play-state
     if show_unplayed_only
       unplayed = proc { |a| !a.played && a }
       albums = albums.select(&unplayed)
     end
+
+    # parse album information for legibility
     albums = albums.map do |album|
       if show_unplayed_only == true
         played_state = ''
@@ -98,6 +102,8 @@ class MusicLibrary
       end
       "\"#{album.title.capitalize}\" by #{album.artist.capitalize}#{played_state}"
     end
+
+    # make sure we have something to show
     if albums.empty?
       puts "I'm sorry, you don't have any albums to show. Add some!"
     else
@@ -110,8 +116,11 @@ class MusicLibrary
       puts "I'm sorry, you don't have any albums to play. Add some!"
       prompt_user
     end
+    # validate album exists for this music library
     album = find_albums(title, artist).first
+
     if album
+      # set play state
       album.played = true
       puts "You're listening to \"#{title}\""
     else
@@ -130,7 +139,7 @@ class MusicLibrary
   end
 end
 
-
+# TESTS
 describe 'adding music to my Musical Library' do
   let(:title) { 'Graceland' }
   let(:artist) { 'Paul Simon' }
