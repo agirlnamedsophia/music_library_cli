@@ -8,4 +8,4 @@
 * If you want to check out the tests (to verify your musical library is doing what it should) type `rspec cli/music_library.rb`
 
 ## Dependencies
-1. for this application to run, you will need a version of RUBY to run the ruby interpreter, and you will need RSPEC installed to run the test suite
+* for this application to run, you will need a version of RUBY to run the ruby interpreter, and you will need RSPEC installed to run the test suite
