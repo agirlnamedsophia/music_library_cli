@@ -1,12 +1,12 @@
 require 'rspec'
 
 class MusicLibrary
-  attr_accessor :input, :output, :albums
+  attr_accessor :input, :albums
 
   Album = Struct.new(:title, :artist, :played)
 
   def initialize
-    @input  = $stdin
+    @input  = nil
     @albums = []
   end
 
