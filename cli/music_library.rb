@@ -57,6 +57,7 @@ class MusicLibrary
         puts "Okay! Bye!"
         exit
       else
+        puts "Glad you're sticking around. Add some more music or play something!"
         prompt_user
       end
 
